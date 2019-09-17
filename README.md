@@ -22,6 +22,28 @@ Or install it yourself as:
 
 ## Usage
 
+Pum::Configure.config do |pum|
+  pum.mix_into [Array]
+end
+
+class AddTwo
+  include Pum
+
+  def call
+    @param + 2
+  end
+end
+
+class AddThree
+  include Pum
+
+  def call
+    @param + 3
+  end
+end
+
+puts [1, 2, 3] | AddTwo | AddThree
+
 TODO: Write usage instructions here
 
 ## Development

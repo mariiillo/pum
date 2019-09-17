@@ -1,4 +1,4 @@
- require "pum/version"
+require "pum/version"
 
 module Pum
   ParamNotFound = Class.new(StandardError)
@@ -25,11 +25,9 @@ module Pum
     extend self
 
     def config
-      yield(Pum::Setup.new)
+      yield self
     end
-  end
 
-  class Setup
     def mix_into(classes)
       classes.each do |klass|
         klass.define_method :| do |callable|
@@ -39,27 +37,3 @@ module Pum
     end
   end
 end
-
-Pum::Configure.config do |pum|
-  pum.mix_into [Array]
-end
-
-# Example
-class AddTwo
-  include Pum
-
-  def call
-    @param + 2
-  end
-
-end
-
-class AddThree
-  include Pum
-
-  def call
-    @param + 3
-  end
-end
-puts [1, 2, 3] | AddTwo | AddThree
-puts [1, 2, 3] | AddTwo | AddThree
