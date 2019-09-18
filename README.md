@@ -21,7 +21,7 @@ Or install it yourself as:
     $ gem install pum
 
 ## Usage
-
+```
 Pum::Configure.config do |pum|
   pum.mix_into [Array]
 end
@@ -43,8 +43,7 @@ class AddThree
 end
 
 puts [1, 2, 3] | AddTwo | AddThree
-
-TODO: Write usage instructions here
+```
 
 ## Development
 
