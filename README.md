@@ -21,7 +21,7 @@ Or install it yourself as:
     $ gem install pum
 
 ## Usage
-```
+```ruby
 Pum::Configure.config do |pum|
   pum.mix_into [Array]
 end
